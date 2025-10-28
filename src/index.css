@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+@font-face{
+  font-family:poppins;
+  src:url("../src/fonts/Poppins-Regular.ttf")
+}
+
+@theme{
+  --font-poppins:poppins,"sans-serif";
+  --color-custom:#FC0103;
+  --color-back:#1D1E22;
+  --color-dark:#17181C;
+  --color-pop:#2E3038;
+}
+html{
+  scroll-behavior:smooth;
+}
