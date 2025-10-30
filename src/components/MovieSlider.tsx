@@ -3,21 +3,17 @@ import { useRef } from 'react'
 import Card from './Card'
 import { useMovies } from '../context/MovieContext';
 import MovieLoader from './MovieLoader';
-import type { Loader } from 'lucide-react';
 
-const MovieSlider = ({id, title, subtitle }: {id:string, title: string, subtitle: string }) => {
+const MovieSlider = ({ id, title, subtitle }: { id: string, title: string, subtitle: string }) => {
 
-    const { trendingMovies, popularMovies, upcomingMovies, loading } = useMovies();
-
-    const sliderRef = useRef(null);
-    const { current } = sliderRef;
-    const clicked = () => {
-        const leftscroll = current.clientWidth * 0.5;
-        current.scrollBy({
-            left: leftscroll,
-            behavior: "smooth"
-        })
+    const moviesContext = useMovies();
+    if (!moviesContext) {
+        return null;
     }
+    const { trendingMovies, popularMovies, upcomingMovies, loading } = moviesContext;
+
+    const sliderRef = useRef<HTMLDivElement | null>(null);
+    
 
 
     let movies: any = trendingMovies;
@@ -74,7 +70,7 @@ const MovieSlider = ({id, title, subtitle }: {id:string, title: string, subtitle
                     ref={sliderRef}
                     style={{ scrollbarWidth: "none" }}
                 >
-                    {movies.map((movie) => (
+                    {movies.map((movie:any) => (
                         <Card key={movie.id} movie={movie} />
                     ))}
 

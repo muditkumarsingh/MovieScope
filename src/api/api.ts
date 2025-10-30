@@ -9,6 +9,7 @@ export const fetchTrendingMovies = async () => {
             `${BASE_URL}/trending/movie/week?api_key=${API_KEY}&language=en-US`
         );
         const data = await response.json();
+        console.log(`${BASE_URL}/trending/movie/week?api_key=${API_KEY}&language=en-US`);
         return data.results;
     }
     catch (error) {

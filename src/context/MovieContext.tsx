@@ -1,9 +1,40 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
 import { fetchGenre, fetchPopularMovies, fetchTrendingMovies, fetchUpcomingMovies } from "../api/api";
+interface MovieInterface {
+  adult: boolean;
+  backdrop_path: string;
+  id: number;
+  title: string;
+  original_title: string;
+  overview: string;
+  poster_path: string;
+  media_type: string; // or "movie" | "tv" if known set
+  original_language: string;
+  genre_ids: number[];
+  popularity: number;
+  release_date: string; // could use Date if you parse it
+  video: boolean;
+  vote_average: number;
+  vote_count: number;
+}
+interface MovieContextType {
+  trendingMovies: MovieInterface[];
+  popularMovies: MovieInterface[];
+  upcomingMovies: MovieInterface[];
+  loading: boolean;
+  error: any;
+  genre: any[];
+  isModalOpen: boolean;
+  setIsModalOpen: (value:boolean) => void;
+  selectedMovie: any;
+  setSelectedMovie: (value:number|null) => void;
+}
 
-
-const MovieContext = createContext();
+const MovieContext = createContext<MovieContextType | null>(null);
 export const useMovies = () => useContext(MovieContext);
+
+
+
 
 
 export const MovieProvider = ({ children }: { children: ReactNode }) => {
@@ -11,9 +42,9 @@ export const MovieProvider = ({ children }: { children: ReactNode }) => {
   const [trendingMovies, setTrendingMovies] = useState<any>([]);
   const [popularMovies, setPopularMovies] = useState<any>([]);
   const [upcomingMovies, setUpcomingMovies] = useState<any>([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<any>(null);
-  const [genre, setGenre] = useState([])
+  const [genre, setGenre] = useState<any>([])
 
 
   useEffect(() => {
@@ -47,12 +78,12 @@ export const MovieProvider = ({ children }: { children: ReactNode }) => {
 
 
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
-  const [selectedMovie ,setSelectedMovie] = useState<any>(null);
+  const [selectedMovie, setSelectedMovie] = useState<any>(null);
 
   return (
-    <MovieContext
+    <MovieContext.Provider
       value={{
         trendingMovies,
         popularMovies,
@@ -63,10 +94,11 @@ export const MovieProvider = ({ children }: { children: ReactNode }) => {
         isModalOpen,
         setIsModalOpen,
         selectedMovie,
-        setSelectedMovie
+        setSelectedMovie,
+      
       }}
     >
       {children}
-    </MovieContext>
+    </MovieContext.Provider>
   )
 }

@@ -5,7 +5,11 @@ import { useMovies } from '../context/MovieContext';
 
 const Navbar = () => {
 
-    const { setIsModalOpen, setSelectedMovie } = useMovies()
+    const moviesContext = useMovies();
+    if (!moviesContext) {
+        return null;
+    }
+    const { setIsModalOpen, setSelectedMovie } = moviesContext;
 
     const [isMenuOpen, setIsMenuOpen] = useState(false)
 

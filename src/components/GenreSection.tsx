@@ -6,7 +6,11 @@ import Card from "./Card";
 
 const GenreSection = () => {
 
-    const { loading, genre } = useMovies();
+    const movieContext = useMovies();
+    const loading = movieContext?.loading ?? false;
+    const genre = movieContext?.genre ?? [];
+
+    
     const [selectedGenre, setSelectedGenre] = useState<any>(null);
     const [loadingGenreMovie, setLoadingGenreMovie] = useState(false);
     const [genreMovie, setGenreMovie] = useState<any>(null);

@@ -4,9 +4,11 @@ import { useMovies } from "../context/MovieContext"
 
 const Card = ({ movie }: { movie: any }) => {
 
-    const { setSelectedMovie, setIsModalOpen } = useMovies();
+    const moviesContext = useMovies();
+    if (!moviesContext) return null;
+    const { setSelectedMovie, setIsModalOpen } = moviesContext;
 
-    const rating = (rate) => {
+    const rating = (rate:number) => {
         return (Math.round(rate * 10) / 10).toFixed(1)
     }
 

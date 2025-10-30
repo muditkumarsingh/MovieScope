@@ -7,7 +7,9 @@ import MovieLoader from "./MovieLoader";
 
 const MovieModal = () => {
 
-    const { isModalOpen, setIsModalOpen, selectedMovie, setSelectedMovie, genre } = useMovies();
+    const context = useMovies();
+    if (!context) return null;
+    const { isModalOpen, setIsModalOpen, selectedMovie, setSelectedMovie, genre } = context;
 
 
     const [movie, setMovie] = useState<any>(null);
@@ -51,9 +53,9 @@ const MovieModal = () => {
         e.stopPropagation();
     }
 
-    console.log(movie)
 
 
+  
 
     if (!isModalOpen) {
 
@@ -99,7 +101,7 @@ const MovieModal = () => {
                             <div className="flex flex-col gap-2 md:gap-5 justify-center w-full">
                                 <p className="text-white text-xs">2017</p>
                                 <h1
-                                    className="text-2xl md:text-5xl font-extrabold text-white   "
+                                    className="text-2xl md:text-5xl font-extrabold text-white"
                                 >
                                     {movie?.title}
                                 </h1>
@@ -108,11 +110,11 @@ const MovieModal = () => {
                                     <h3 className="text-white">Ratings: {rating(movie.vote_average)}/10</h3>
                                 </div>
                                 <div className="text-white text-sm">
-                                    <span className="font-bold">Language</span> : {languages[movie.original_language]}
+                                    <span className="font-bold">Language</span> : {languages[movie.original_language as keyof typeof languages] ?? movie.original_language}
                                 </div>
                                 <div className="flex flex-wrap gap-2 w-full mt-1">
 
-                                    {movie?.genres?.map((genre) => (
+                                    {movie?.genres?.map((genre:{name:string,id:number}) => (
                                         <div className="text-white font-bold text-xs px-2 py-1 bg-gray-800 rounded-md">{genre.name}</div>
 
                                     ))}

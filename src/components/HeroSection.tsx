@@ -8,7 +8,9 @@ import { languages } from '../assets/language';
 const HeroSection = () => {
 
 
-    const { loading, trendingMovies, genre , setIsModalOpen,setSelectedMovie } = useMovies();
+    const movieContext = useMovies();
+    if (!movieContext) return null;
+    const { loading, trendingMovies, genre , setIsModalOpen,setSelectedMovie } = movieContext;
     const [currentSlide, setCurrentSlide] = useState(0);
     const [isTransitioning, setIsTransitioning] = useState(false);
 
@@ -116,7 +118,7 @@ const HeroSection = () => {
                             {/* icons */}
                             <div className='text-white mt-4 flex gap-4 max-w-md'>
                                 <div className='flex gap-2 items-center'>
-                                    <Languages size={30} /> <p className='text-md md:text-xl'>{languages[currentMovie.original_language]}</p>
+                                    <Languages size={30} /> <p className='text-md md:text-xl'>{languages[currentMovie.original_language as keyof typeof languages] ?? currentMovie.original_language}</p>
                                 </div>
                                 <div className='flex gap-2 items-center'>
                                     <Star size={25} color='#FC0103' fill='#FC0103' stroke='0' />
