@@ -71,7 +71,6 @@ const Navbar = () => {
             setShowSearchResult(false)
         }
     }, [searchQuery])
-    console.log(searchQuery)
 
 
 
@@ -82,7 +81,6 @@ const Navbar = () => {
         setIsMenuOpen(false);
     }
 
-    console.log(searchResult)
 
 
 
