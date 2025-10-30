@@ -1,4 +1,4 @@
-import { Cross, Star, X } from "lucide-react"
+import { X } from "lucide-react"
 import { useMovies } from "../context/MovieContext"
 import { useEffect, useState } from "react";
 import { fetchMovieDetails, getImageUrl } from "../api/api";
@@ -9,17 +9,15 @@ const MovieModal = () => {
 
     const context = useMovies();
     if (!context) return null;
-    const { isModalOpen, setIsModalOpen, selectedMovie, setSelectedMovie, genre } = context;
+    const { isModalOpen, setIsModalOpen, selectedMovie, setSelectedMovie } = context;
 
 
     const [movie, setMovie] = useState<any>(null);
     const [error, setError] = useState<any>(null);
     const [loading, setLoading] = useState(false);
 
-    const genreName = Object.fromEntries(
-        genre.map((obj: any) => [obj.id, obj.name])
-    )
 
+    
     useEffect(() => {
         async function getData() {
 
@@ -33,7 +31,9 @@ const MovieModal = () => {
                 }, 500)
             }
             catch (err) {
-                console.log("error: ", err)
+                setError(err);
+                console.log("error: ", error)
+
             }
         }
         getData();

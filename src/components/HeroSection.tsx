@@ -1,4 +1,4 @@
-import { Clock, Keyboard, Languages, Loader, Star } from 'lucide-react'
+import {  Languages, Star } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { useMovies } from '../context/MovieContext'
 import MovieLoader from './MovieLoader';

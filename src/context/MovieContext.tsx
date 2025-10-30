@@ -67,6 +67,7 @@ export const MovieProvider = ({ children }: { children: ReactNode }) => {
       }
       catch (err) {
         console.log("error fetching ", err);
+        setError(err);
       }
       finally {
         setLoading(false)
