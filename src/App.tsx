@@ -5,7 +5,6 @@ import { MovieProvider } from './context/MovieContext'
 import MovieSlider from './components/MovieSlider'
 import GenreSection from './components/GenreSection'
 import MovieModal from './components/MovieModal'
-import { useState } from 'react'
 import Footer from './components/Footer'
 
 const App = () => {
