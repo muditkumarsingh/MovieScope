@@ -62,6 +62,15 @@ const MovieModal = () => {
         return null
     }
 
+    const covertor = (money)=> {
+    let str = money.toString();
+    
+    for (let i = str.length - 3; i > 0; i -= 3) {
+        str = str.slice(0, i) + ',' + str.slice(i);
+    }
+    return str;
+}
+
 
 
 
@@ -145,7 +154,7 @@ const MovieModal = () => {
                             <div className="h-auto hidden md:block w-[1px] bg-gray-500"></div>
                             <div className="flex flex-col justify-center items-center">
                                 <h1 className="text-white font-bold text-lg">Revenue</h1>
-                                <p className="text-sm text-gray-500">$ {movie.revenue}</p>
+                                <p className="text-sm text-gray-500">$ covertor({movie.revenue})</p>
                             </div>
                             <div className="h-auto hidden md:block w-[1px] bg-gray-500"></div>
                         </div>
