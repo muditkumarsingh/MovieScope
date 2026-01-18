@@ -63,15 +63,19 @@ const MovieModal = () => {
     }
 
 
-    const covertor = (money: number): string => {
-        let str = money.toString();
+ 
 
-        for (let i = str.length - 3; i > 0; i -= 3) {
-            str = str.slice(0, i) + ',' + str.slice(i);
+        const covertor =  (money: number): string => {
+            if(!money) return "N/A";
+            let str = money.toString();
+
+            for (let i = str.length - 3; i > 0; i -= 3) {
+                str = str.slice(0, i) + ',' + str.slice(i);
+            }
+            return str;
         }
-        return str;
-    }
 
+ 
 
 
     return (
