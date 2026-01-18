@@ -154,7 +154,7 @@ const MovieModal = () => {
                             <div className="h-auto hidden md:block w-[1px] bg-gray-500"></div>
                             <div className="flex flex-col justify-center items-center">
                                 <h1 className="text-white font-bold text-lg">Revenue</h1>
-                                <p className="text-sm text-gray-500">$ covertor({movie.revenue})</p>
+                                <p className="text-sm text-gray-500">$ {covertor(movie.revenue)}</p>
                             </div>
                             <div className="h-auto hidden md:block w-[1px] bg-gray-500"></div>
                         </div>
