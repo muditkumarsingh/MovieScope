@@ -17,7 +17,7 @@ const MovieModal = () => {
     const [loading, setLoading] = useState(false);
 
 
-    
+
     useEffect(() => {
         async function getData() {
 
@@ -55,13 +55,22 @@ const MovieModal = () => {
 
 
 
-  
+
 
     if (!isModalOpen) {
 
         return null
     }
 
+
+    const covertor = (money: number): string => {
+        let str = money.toString();
+
+        for (let i = str.length - 3; i > 0; i -= 3) {
+            str = str.slice(0, i) + ',' + str.slice(i);
+        }
+        return str;
+    }
 
 
 
@@ -114,7 +123,7 @@ const MovieModal = () => {
                                 </div>
                                 <div className="flex flex-wrap gap-2 w-full mt-1">
 
-                                    {movie?.genres?.map((genre:{name:string,id:number}) => (
+                                    {movie?.genres?.map((genre: { name: string, id: number }) => (
                                         <div className="text-white font-bold text-xs px-2 py-1 bg-gray-800 rounded-md">{genre.name}</div>
 
                                     ))}
@@ -145,7 +154,7 @@ const MovieModal = () => {
                             <div className="h-auto hidden md:block w-[1px] bg-gray-500"></div>
                             <div className="flex flex-col justify-center items-center">
                                 <h1 className="text-white font-bold text-lg">Revenue</h1>
-                                <p className="text-sm text-gray-500">$ {movie.revenue}</p>
+                                <p className="text-sm text-gray-500">$ {covertor(movie.revenue)}</p>
                             </div>
                             <div className="h-auto hidden md:block w-[1px] bg-gray-500"></div>
                         </div>
