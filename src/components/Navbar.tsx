@@ -149,7 +149,7 @@ const Navbar = () => {
 
                                 <div className='absolute w-full  top-12 bg-pop rounded-md  divide-y divide-neutral-700'>
 
-                                    {searchResult?.map((movie:MovieInterface) => (
+                                    {searchResult?.map((movie: MovieInterface) => (
                                         <div className='w-full flex py-2 gap-2 hover:bg-back px-2 cursor-pointer ' onClick={() => handleSearchClick(movie.id)}>
                                             <div className='w-10 h-10 flex-shrink-0 rounded-md bg-black overflow-hidden'>
                                                 {movie.poster_path ?
@@ -164,8 +164,8 @@ const Navbar = () => {
                                                 }
                                             </div>
                                             <div className='w-full overflow-hidden flex-col'>
-                                                <p className='text-gray-200 font-bold text-sm truncate'>{movie.title}</p>
-                                                <p className='text-gray-400 text-xs'>{movie.release_date.slice(0, 4)}</p>
+                                                <p className='text-gray-200 font-bold text-sm truncate'>{movie?.title}</p>
+                                                <p className='text-gray-400 text-xs'>{movie.release_date?.slice(0, 4)}</p>
                                             </div>
                                         </div>
                                     ))}
@@ -226,7 +226,7 @@ const Navbar = () => {
 
                                     <div className='absolute w-full  top-12 bg-pop rounded-md  divide-y divide-neutral-700'>
 
-                                        {searchResult?.map((movie:MovieInterface) => (
+                                        {searchResult?.map((movie: MovieInterface) => (
                                             <div className='w-full flex py-2 gap-2 hover:bg-back px-2 cursor-pointer ' onClick={() => handleSearchClick(movie.id)}>
                                                 <div className='w-10 h-10 flex-shrink-0 rounded-md bg-black overflow-hidden'>
                                                     {movie.poster_path ?
@@ -241,8 +241,8 @@ const Navbar = () => {
                                                     }
                                                 </div>
                                                 <div className='w-full overflow-hidden flex-col'>
-                                                    <p className='text-gray-200 font-bold text-sm truncate'>{movie.title}</p>
-                                                    <p className='text-gray-400 text-xs'>{movie.release_date.slice(0, 4)}</p>
+                                                    <p className='text-gray-200 font-bold text-sm truncate'>{movie?.title}</p>
+                                                    <p className='text-gray-400 text-xs'>{movie?.release_date?.slice(0, 4)}</p>
                                                 </div>
                                             </div>
                                         ))}
