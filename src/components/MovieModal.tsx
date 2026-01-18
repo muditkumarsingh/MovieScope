@@ -62,7 +62,7 @@ const MovieModal = () => {
         return null
     }
 
-    const covertor = (money)=> {
+    const covertor = (money:number):string=> {
     let str = money.toString();
     
     for (let i = str.length - 3; i > 0; i -= 3) {
